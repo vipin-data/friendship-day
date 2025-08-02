@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Friendship Day!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .font-pacifico { font-family: 'Pacifico', cursive; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f9ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+        .watermark {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-20deg);
+            font-size: 12vw;
+            font-weight: 900;
+            color: rgba(59, 130, 246, 0.08);
+            z-index: 0;
+            pointer-events: none;
+            user-select: none;
+            font-family: 'Pacifico', cursive;
+        }
+        .card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            z-index: 10;
+        }
+        .page {
+            display: none;
+            animation: fadeIn 0.7s ease-in-out;
+        }
+        #initialView { display: block; }
+        .nav-button {
+            margin-top: 2rem;
+            background-color: #3b82f6;
+            color: white;
+            font-weight: bold;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .nav-button:hover {
+            background-color: #2563eb;
+            transform: translateY(-2px) scale(1.05);
+        }
+        .custom-list {
+            text-align: left;
+            margin: 1.5rem auto 0;
+            max-width: 350px;
+        }
+        .custom-list li {
+            background-color: #eff6ff;
+            padding: 0.75rem 1.25rem;
+            border-radius: 12px;
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+            list-style-position: inside;
+        }
+        .sticker {
+            position: absolute;
+            font-size: 4rem;
+            opacity: 0.8;
+            user-select: none;
+            z-index: 1;
+            animation: float 6s ease-in-out infinite;
+        }
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: #93c5fd;
+            opacity: 0.9;
+            border-radius: 50%;
+            animation: fall 4s linear forwards;
+            z-index: 20;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fall {
+            to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body>
+    <audio id="background-music" loop>
+        <source src="Tera-Yaar-Hoon-Main-Female-1.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="watermark">Vipin</div>
+
+    <div class="sticker" style="top: 15%; left: 10%; transform: rotate(-15deg);">✨</div>
+    <div class="sticker" style="top: 20%; right: 12%; transform: rotate(20deg); animation-delay: 3s;">😊</div>
+    <div class="sticker" style="bottom: 15%; right: 15%; transform: rotate(-10deg);">🤝</div>
+    <div class="sticker" style="bottom: 25%; left: 8%; transform: rotate(15deg); animation-delay: 1.5s;">🎉</div>
+    <div class="sticker" style="top: 60%; left: 5%; transform: rotate(5deg); animation-delay: 4s;">💖</div>
+    <div class="sticker" style="top: 55%; right: 5%; transform: rotate(-5deg); animation-delay: 2s;">🤗</div>
+
+    <div class="card">
+        <div id="initialView" class="page">
+            <h1 class="font-pacifico text-4xl md:text-5xl text-blue-500">Hey Naisha, Anaya, & Priya!</h1>
+            <p class="text-gray-600 mt-4">Aapke liye ek chota sa surprise hai...</p>
+            <button id="revealButton" class="nav-button">Yahan Click Karein</button>
+        </div>
+
+        <div id="page-greeting" class="page">
+            <h1 class="font-pacifico text-4xl md:text-5xl text-blue-500">Happy Friendship Day!</h1>
+            <img src="https://images.unsplash.com/photo-1562791483-663a8a9a468c?q=80&w=800" alt="Friends laughing together" class="w-full max-w-sm mx-auto rounded-lg shadow-md my-6" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f0f9ff/3b82f6?text=Happy+Friendship+Day!';">
+            <p class="mt-4 text-gray-700">Wishing you all the most amazing day, filled with joy, laughter, and everything that makes our friendship special!</p>
+            <p class="mt-4 text-2xl">😊✨❤️</p>
+            <button onclick="nextPage('page-adventures')" class="nav-button">Aage dekhein...</button>
+        </div>
+
+        <div id="page-adventures" class="page">
+            <h2 class="text-3xl font-bold text-gray-800">Things I Look Forward To</h2>
+            <p class="mt-2 text-gray-600">Can't wait for more amazing moments with you all.</p>
+            <ul class="custom-list">
+                <li>☕ Another long chat over coffee with endless conversations.</li>
+                <li>🎶 Sharing our favorite books and music with each other.</li>
+                <li>😊 Just chilling together in comfortable silence.</li>
+                <li>🫂 Being each other's biggest support system, always.</li>
+            </ul>
+            <button onclick="nextPage('page-reasons')" class="nav-button">Why you're the best...</button>
+        </div>
+
+        <div id="page-reasons" class="page">
+            <h2 class="text-3xl font-bold text-gray-800">Why Our Friendship is So Special</h2>
+            <ul class="custom-list">
+                <li>Your understanding and support mean the world to me.</li>
+                <li>You make even ordinary days feel special.</li>
+                <li>I can be my truest self around you, without any filter.</li>
+                <li>Your strength and kindness inspire me every day.</li>
+            </ul>
+            <button onclick="nextPage('page-promises')" class="nav-button">And some promises...</button>
+        </div>
+        
+        <div id="page-promises" class="page">
+            <h2 class="text-3xl font-bold text-gray-800">Kuch Vaade, Mere Dosto</h2>
+            <ul class="custom-list">
+                <li>🤝 Promise to always be on your team, no matter what.</li>
+                <li>😂 Promise to always laugh at your silly jokes.</li>
+                <li>📞 Promise to always be just a call away.</li>
+                <li>😠 Promise to never let you stay angry for long!</li>
+            </ul>
+            <button onclick="nextPage('page-final')" class="nav-button">One last thing...</button>
+        </div>
+        
+        <div id="page-final" class="page">
+            <h1 class="font-pacifico text-4xl md:text-5xl text-blue-500">To My Unforgettable Friends</h1>
+            <p class="mt-4 text-gray-700 text-lg">Distance means so little when friends mean so much. Thank you for every laugh, every piece of advice, and for being my rock.</p>
+            <p class="mt-4 text-gray-700 text-lg">Happy Friendship Day, Naisha, Anaya, and Priya! Here's to another year of our amazing bond, and to all the adventures that are waiting for us.</p>
+            <p class="mt-6 text-blue-500 font-semibold text-2xl">Friends forever ❤️</p>
+            <p class="mt-8 text-gray-600 font-semibold text-lg">Your friend,<br>Vipin</p>
+        </div>
+    </div>
+
+    <script>
+        const revealButton = document.getElementById('revealButton');
+        const backgroundMusic = document.getElementById('background-music');
+
+        function nextPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => page.style.display = 'none');
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.style.display = 'block';
+            }
+            createConfetti();
+        }
+
+        // Event listener for the first button click
+        revealButton.addEventListener('click', () => {
+            // Go to the first page
+            nextPage('page-greeting');
+            
+            // Play background music after the user interacts with the page
+            if (backgroundMusic && backgroundMusic.paused) {
+                backgroundMusic.play().catch(error => {
+                    console.log("Browser prevented audio playback: " + error);
+                });
+            }
+        });
+
+        function createConfetti() {
+            const colors = ['#93c5fd', '#60a5fa', '#3b82f6', '#2563eb', '#facc15', '#fbbf24'];
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.width = `${Math.random() * 10 + 5}px`;
+                confetti.style.height = confetti.style.width;
+                confetti.style.left = `${Math.random() * 100}vw`;
+                confetti.style.animationDelay = `${Math.random() * 1}s`;
+                confetti.style.animationDuration = `${Math.random() * 2 + 3}s`;
+                document.body.appendChild(confetti);
+                confetti.addEventListener('animationend', () => confetti.remove());
+            }
+        }
+    </script>
+</body>
+</html>
